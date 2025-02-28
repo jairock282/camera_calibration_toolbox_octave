@@ -1,4 +1,4 @@
-if ~exist('Calib_Results.mat'),
+if ~exist('Calib_Results.m'),
    fprintf(1,'\nCalibration file Calib_Results.mat not found!\n');
    return;
 end;
