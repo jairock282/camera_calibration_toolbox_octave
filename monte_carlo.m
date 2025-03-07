@@ -39,9 +39,8 @@ for i = [1:n_mc_iter]
   noise = mr/std(mr);
 
   for kk = [1:cnt_samples]
-    ## set x_kk and X_kk (tmp variables)
+    ## set x_kk
     eval(['x_kk = x_' num2str(kk) '_og;']); ## 2D coords
-    eval(['X_kk = X_' num2str(kk) '_og;']); ## 3D coords
 
     ## Add noise in x_kk
     tmp_x_kk = x_kk;
@@ -49,22 +48,14 @@ for i = [1:n_mc_iter]
     tmp_x_kk(2,:) = tmp_x_kk(2,:) + noise';
     tmp_x_kk(isnan(tmp_x_kk)) = 0;
 
-    ## Add noise in X_KK
-    tmp_X_kk = X_kk;
-    tmp_X_kk(1,:) = tmp_X_kk(1,:) + noise';
-    tmp_X_kk(2,:) = tmp_X_kk(2,:) + noise';
-    tmp_X_kk(3,:) = tmp_X_kk(3,:) + noise';
-    tmp_X_kk(isnan(tmp_X_kk)) = 0;
-
     ## Save new sample
     eval(['x_' num2str(kk) ' = tmp_x_kk;']); ## 2D coords
-    eval(['X_' num2str(kk) ' = tmp_X_kk;']); ## 3D coords
-    printf("Noise added to sample x_%d and X_%d \n", kk, kk);
+    printf("Noise added to sample x_%d \n", kk);
 
   endfor
 
-##  go_calib_optim;
-  go_calib_optim_iter
+  ## Calibration
+  go_calib_optim;
   fileID = fopen("test_calibration_results.txt", "a");
   fprintf(fileID,'MonteCarlo Iteration: %d\n', i);
   fprintf(fileID,'Calibration results after optimization (with uncertainties):\n\n');
@@ -75,6 +66,8 @@ for i = [1:n_mc_iter]
   fprintf(fileID,'Pixel error:          err = [ %3.5f   %3.5f ]\n',err_std);
   fprintf(fileID,'==================================================================================\n\n\n');
   fclose(fileID);
+
+  # TODO: Guardar valores por cada iteracion
 
 endfor
 
