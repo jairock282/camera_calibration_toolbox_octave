@@ -590,8 +590,6 @@ end;
 extract_parameters;
 
 fprintf(1,'done\n');
-
-
 fprintf(1,'\n\nCalibration results after optimization (with uncertainties):\n\n');
 fprintf(1,'Focal Length:          fc = [ %3.5f   %3.5f ] +/- [ %3.5f   %3.5f ]\n',[fc;fc_error]);
 fprintf(1,'Principal point:       cc = [ %3.5f   %3.5f ] +/- [ %3.5f   %3.5f ]\n',[cc;cc_error]);
