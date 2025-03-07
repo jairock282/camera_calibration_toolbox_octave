@@ -68,6 +68,14 @@ for i = [1:n_mc_iter]
   fclose(fileID);
 
   # TODO: Guardar valores por cada iteracion
+  # Valores intrinsecos cada iteracion
+    # fc = [ %3.5f   %3.5f ]
+    # cc = [ %3.5f   %3.5f ]
+    # kc = [ %3.5f   %3.5f   %3.5f   %3.5f  %5.5f ]
+
+  # Valores extrinsicos cada imagen, cada iteracion
+    # omc_n = [ 2.17475 ; 0.607741 ; 0.621614 ];
+    # Tc_n  = [ -569.175 ; -118.916 ; 1618.37 ];
 
 endfor
 
