@@ -194,6 +194,7 @@ save("Tc_z_total.mat", "Tc_z_total");
 
 % Print table header
 fileID = fopen("intrinsic_extrinsic_results.txt", "w");
+fprintf(fileID, "MonteCarlo iterations: %d\n\n", n_mc_iter);
 fprintf(fileID, "+--------------------------+-----------------------+------------------+\n");
 fprintf(fileID, "| Intrinsic Parameters     | Estimated Values      | Uncertainty      |\n");
 fprintf(fileID, "+--------------------------+-----------------------+------------------+\n");
